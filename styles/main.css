@@ -68,6 +68,12 @@ body {
     margin-right: 10px;
 }
 
+.login__hide {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+}
+
 .login__field--password {
     margin: 24px 0 0 0;
 }
