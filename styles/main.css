@@ -1,3 +1,10 @@
+:root {
+    --bg-color: #181829;
+    --text-color: #fff;
+    --btn-color: #246BFD;
+    --secondary-color: #65656B;
+}
+
 @font-face {
     font-family: 'Source Sans Pro';
     src: url('../fonts/SourceSans3-VariableFont_wght.ttf') format('truetype');
@@ -6,11 +13,19 @@
 }
 
 body {
-    background-color: #181829;
+    background-color: var(--bg-color);
     font-family: 'Source Sans Pro', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--text-color);
+}
+
+a {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    color: var(--text-color);
+    text-decoration: none;
 }
 
 .login {
@@ -33,7 +48,7 @@ body {
     margin: 18px auto 18px auto;
     width: 66px;
     height: 5px;
-    background-color: #fff;
+    background-color: var(--text-color);
     opacity: 0.1;
 }
 
@@ -41,7 +56,7 @@ body {
     margin: 0 0 32px 0;
     width: 100%;
     font-size: 28px;
-    color: #fff;
+    color: var(--text-color);
 }
 
 .login__field {
@@ -50,7 +65,7 @@ body {
     border-radius: 20px;
     padding: 23px 16px;
     width: 325px;
-    background: #181829;
+    background: var(--bg-color);
 }
 
 .login__input {
@@ -58,7 +73,7 @@ body {
     outline: none;
     flex: 1;
     background: transparent;
-    color: #65656B;
+    color: var(--secondary-color);
     font-size: 18px;
 }
 
@@ -85,9 +100,361 @@ body {
 .button {
     width: 100%;
     padding: 20px 0;
-    background: #246BFD;
+    background: var(--btn-color);
     color: white;
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    font-size: 18px;
 }
+
+.container {
+    position: relative;
+    min-height: calc(100vh - 20px);
+    box-sizing: border-box;
+    width: 475px;
+    display: flex;
+    margin: 20px 0 0 0;
+    flex-direction: column;
+    background-color: #222232;
+    border-radius: 30px 30px 0 0;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100px;
+    background-color: #2B2B3D;
+    gap: 30px;
+    justify-content: center;
+}
+
+.menu__item, .menu__item--current  {
+    display: inline-block;
+    padding-left: 35px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 35px 35px;
+}
+
+.menu__item {
+    opacity: 0.3;
+}
+
+.menu__item--current, .menu__item:hover {
+    opacity: 1;
+}
+
+.calendar {
+    background-image: url("../images/calendar.svg");
+}
+
+.trophy {
+    background-image: url("../images/trophy.svg");
+}
+
+.chart {
+    background-image: url("../images/bar-chart-h.svg");
+}
+
+.users {
+    background-image: url("../images/users.svg");
+}
+
+.user {
+    background-image: url("../images/user.svg");
+}
+
+.content {
+    flex: 1;
+    padding: 52px 28px 11px 28px;
+}
+
+.search__form {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+}
+
+.search__field {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 18px 15px;
+    width: 346px;
+    background: var(--bg-color);
+}
+
+.search__input {
+    width: 175px;
+    border: none;
+    outline: none;
+    flex: 1;
+    background: transparent;
+    color: var(--secondary-color);
+    font-size: 18px;
+}
+
+.search__icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.cancel {
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.matches {
+    margin: 28px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.matches__item {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.matches__teams {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.matches__team1, .matches__team2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.matches__team1 {
+    box-sizing: content-box;
+    z-index: 99;
+    border: 3px solid #222232;
+}
+
+.matches__team2 {
+    margin: 0 -0 0 -6px;
+}
+
+.matches__img {
+    width: 25px;
+    height: 25px;
+}
+
+.matches__name, .players__name {
+    color: var(--text-color);
+}
+
+.players__item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+.matches__date, .players__date {
+    font-size: 14px;
+    color: var(--secondary-color);
+}
+
+.matches__result {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+    text-align: center;
+}
+
+.matches__team_name1, .matches__team_name2 {
+    width: 150px;
+}
+
+.team {
+    margin: 20px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.team__background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-color);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.team__img {
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+}
+
+.team__title {
+    font-size: 24px;
+}
+
+.players, .teams {
+    display: flex;
+    flex-direction: column;
+}
+
+.players {
+    margin: 15px 0 0 0;
+    gap: 5px;
+}
+
+.teams {
+    margin: 25px 0 0 0;
+    gap: 15px;
+}
+
+.players__item, .teams__item {
+    display: flex;
+    flex-direction: row;
+}
+
+.players__item {
+    gap: 15px;
+}
+
+.teams__item {
+    gap: 25px;
+}
+
+.players__logo, .teams__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-color);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.teams__image {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+}
+
+.players__image {
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+}
+
+.players__name, .teams__name {
+    display: flex;
+    align-items: center;
+}
+
+.players__name {
+    font-size: 18px;
+}
+
+.teams__name, .teams__link {
+    font-size: 20px;
+}
+
+.season {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.season__title {
+    font-size: 20px;
+}
+
+.season__result-list {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    background-color: var(--bg-color)9;
+    border-radius: 20px;
+}
+
+.season__title-name {
+    display: flex;
+    flex-direction: row;
+}
+
+.season__column-team {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding: 10px 0 10px 15px;
+    width: 200px;
+    align-items: center;
+}
+
+.season__column-result {
+    display: flex;
+    padding: 10px 0;
+    width: 43px;
+    border-bottom: 1px solid #222232;
+    align-items: center;
+}
+
+.season__image {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+}
+
+.pagination {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+.pagination__prev, .pagination__page, .pagination__current, .pagination__next {
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.pagination__prev:hover, .pagination__page:hover, .pagination__current:hover, .pagination__next:hover {
+    background-color: var(--btn-color);
+    color: var(--text-color);
+}
+
+.pagination__prev, .pagination__next {
+    display: flex;
+    width: 80px;
+    justify-content: center;
+}
+
+.pagination__prev, .pagination__page, .pagination__next {
+    background-color: var(--bg-color);
+}
+
+.pagination__current {
+    background-color: var(--btn-color);
+    color: var(--text-color);
+}
+
