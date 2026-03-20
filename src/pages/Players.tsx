@@ -42,7 +42,7 @@ const Players = () => {
     return (
         <>
             <div className="search">
-  x
+
             </div>
 
             <div className="players">

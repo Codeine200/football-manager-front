@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx",
+    "moduleResolution": "Node",
     "target": "ES2023",
     "useDefineForClassFields": true,
     "module": "ESNext",
