@@ -1,18 +1,18 @@
 import {useEffect, useRef, useState} from "react";
-import {PlayerCard} from "@/components/player-card/PlayerCard";
-import styles from "./PlayersPage.module.css";
-import type {PageResponse, Player} from "@/types/types.ts";
+import styles from "./TeamsPage.module.css";
+import type {PageResponse, Team} from "@/types/types.ts";
 import {Pagination} from "@/components/pagination/Pagination";
 import {SearchInput} from "@/components/search-input/SearchInput"
 import Preloader from "@/components/preloader/Preloader";
 import fetchData from "@/api/api.ts"
-import {API_PLAYERS_PATH} from "@/config/api.ts";
+import {API_TEAMS_PATH} from "@/config/api.ts";
+import {TeamCard} from "@/components/team-card/TeamCard";
 
 const pageSize = 7;
 
-const PlayersPage = () => {
+const TeamsPage = () => {
     const [search, setSearch] = useState<string>('');
-    const [players, setPlayers] = useState<Player[]>([]);
+    const [teams, setTeams] = useState<Team[]>([]);
     const [currPage, setCurrPage] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
     const [loading, setLoading] = useState(false);
@@ -33,10 +33,10 @@ const PlayersPage = () => {
                 params["search"] = search;
             }
 
-            fetchData(API_PLAYERS_PATH, {
+            fetchData(API_TEAMS_PATH, {
                 params: params,
-                onSuccess: (data: PageResponse<Player>) => {
-                    setPlayers(data.items);
+                onSuccess: (data: PageResponse<Team>) => {
+                    setTeams(data.items);
                     setTotalPages(data.totalPages);
                 },
                 loading: (loading: boolean) => {
@@ -58,15 +58,15 @@ const PlayersPage = () => {
             <SearchInput
                 value={search}
                 onChange={setSearch}
-                placeholder="Search your player"
+                placeholder="Search your team"
             />
             {loading
                 ? <Preloader />
-                :  <div className={styles.players}>
-                        {players.map((player) => (
-                            <PlayerCard player={player} key={player.id} />
-                        ))}
-                   </div>
+                :  <div className={styles.teams}>
+                    {teams.map((team) => (
+                        <TeamCard team={team} key={team.id} />
+                    ))}
+                </div>
 
             }
             <Pagination currPage={currPage} totalSizePage={totalPages} onChange={(page) => setCurrPage(page)} />
@@ -75,4 +75,4 @@ const PlayersPage = () => {
     );
 };
 
-export default PlayersPage;
+export default TeamsPage;

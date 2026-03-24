@@ -16,5 +16,5 @@ export type Player = {
 export type Team = {
     id: number;
     name: string;
-    imageUrl: string;
+    imageUrl?: string;
 }
