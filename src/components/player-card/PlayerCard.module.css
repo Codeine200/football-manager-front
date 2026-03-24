@@ -1,0 +1,35 @@
+
+.item {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+}
+
+.team {
+    font-size: 14px;
+    color: var(--secondary-color);
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-color);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.image {
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+}
+
+.name {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}

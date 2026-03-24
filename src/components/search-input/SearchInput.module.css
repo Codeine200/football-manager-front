@@ -1,0 +1,38 @@
+.form {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 18px 15px;
+    width: 346px;
+    background: var(--bg-color);
+}
+
+.input {
+    width: 175px;
+    border: none;
+    outline: none;
+    flex: 1;
+    background: transparent;
+    color: var(--secondary-color);
+    font-size: 18px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.cancel {
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}

@@ -1,0 +1,43 @@
+
+.pagination {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+.prev, .page, .next {
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: var(--secondary-color);
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.prev:hover, .page:hover, .current:hover, .next:hover {
+    background-color: var(--btn-color);
+    color: var(--text-color);
+}
+
+.prev, .next {
+    display: flex;
+    width: 80px;
+    justify-content: center;
+}
+
+.prev, .page, .next {
+    background-color: var(--bg-color);
+}
+
+.current {
+    background-color: var(--btn-color);
+    color: var(--text-color);
+}
+
+.inactive:hover {
+    background-color: var(--bg-color);
+    cursor: default;
+    color: var(--secondary-color);
+}

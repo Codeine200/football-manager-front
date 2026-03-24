@@ -27,3 +27,69 @@ a {
     color: var(--text-color);
     text-decoration: none;
 }
+
+.container {
+    position: relative;
+    min-height: calc(100vh - 20px);
+    box-sizing: border-box;
+    width: 475px;
+    display: flex;
+    margin: 20px 0 0 0;
+    flex-direction: column;
+    background-color: #222232;
+    border-radius: 30px 30px 0 0;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100px;
+    background-color: #2B2B3D;
+    gap: 30px;
+    justify-content: center;
+}
+
+.menu__item, .menu__item--current  {
+    display: inline-block;
+    padding-left: 35px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 35px 35px;
+}
+
+.menu__item {
+    opacity: 0.3;
+}
+
+.menu__item--current, .menu__item:hover {
+    opacity: 1;
+}
+
+.calendar {
+    background-image: url("../images/calendar.svg");
+}
+
+.trophy {
+    background-image: url("../images/trophy.svg");
+}
+
+.chart {
+    background-image: url("../images/bar-chart-h.svg");
+}
+
+.users {
+    background-image: url("../images/users.svg");
+}
+
+.user {
+    background-image: url("../images/user.svg");
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 52px 28px 11px 28px;
+}
+

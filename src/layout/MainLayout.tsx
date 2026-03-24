@@ -1,4 +1,5 @@
 import { Outlet, NavLink } from "react-router-dom";
+import {getLinkClass} from "@/helper/helpers.ts";
 
 const MainLayout = () => {
     return (
@@ -9,37 +10,27 @@ const MainLayout = () => {
             <nav className="menu">
                 <NavLink
                     to="/schedule"
-                    className={({ isActive }) =>
-                        `menu__item calendar ${isActive ? "menu__item--current" : ""}`
-                    }
+                    className={getLinkClass("calendar")}
                 />
 
                 <NavLink
                     to="/matches"
-                    className={({ isActive }) =>
-                        `menu__item trophy ${isActive ? "menu__item--current" : ""}`
-                    }
+                    className={getLinkClass("trophy")}
                 />
 
                 <NavLink
                     to="/seasons"
-                    className={({ isActive }) =>
-                        `menu__item chart ${isActive ? "menu__item--current" : ""}`
-                    }
+                    className={getLinkClass("chart")}
                 />
 
                 <NavLink
                     to="/teams"
-                    className={({ isActive }) =>
-                        `menu__item users ${isActive ? "menu__item--current" : ""}`
-                    }
+                    className={getLinkClass("users")}
                 />
 
                 <NavLink
                     to="/players"
-                    className={({ isActive }) =>
-                        `menu__item user ${isActive ? "menu__item--current" : ""}`
-                    }
+                    className={getLinkClass("user")}
                 />
             </nav>
         </div>
