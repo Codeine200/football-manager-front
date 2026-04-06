@@ -1,0 +1,22 @@
+
+.item {
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+}
+
+.title {
+    margin: 10px 0 0 0;
+}
+
+.result {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+    text-align: center;
+}
+
+.teamName1, .teamName2 {
+    width: 150px;
+}

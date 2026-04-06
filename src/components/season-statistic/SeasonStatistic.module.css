@@ -1,0 +1,40 @@
+
+.title {
+    font-size: 20px;
+}
+
+.resultList {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0 45px 0;
+    background-color: var(--bg-color)9;
+    border-radius: 20px;
+}
+
+.titleName {
+    display: flex;
+    flex-direction: row;
+}
+
+.columnTeam {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding: 10px 10px 10px 0;
+    width: 200px;
+    align-items: center;
+}
+
+.columnResult {
+    display: flex;
+    padding: 10px 0;
+    width: 43px;
+    border-bottom: 1px solid var(--secondary-color);;
+    align-items: center;
+}
+
+.image {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+}

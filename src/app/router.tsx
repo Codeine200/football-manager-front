@@ -2,8 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "@/layout/MainLayout";
 import PlayersPage from "@/pages/PlayersPage/PlayersPage";
 import TeamsPage from "@/pages/TeamsPage/TeamsPage";
-import Matches from "@/pages/Matches";
 import TeamDetails from "@/pages/TeamDetails";
+import MatchesSchedulePage from "@/pages/MatchesSchedulePage/MatchesSchedulePage";
+import MatchesResultPage from "@/pages/MatchesResultPage/MatchesResultPage";
+import SeasonStatisticPage from "@/pages/MatchStatisticPage/SeasonStatisticPage.tsx";
 
 export const router = createBrowserRouter([
     {
@@ -12,10 +14,10 @@ export const router = createBrowserRouter([
         children: [
             { index: true, element: <TeamsPage /> },
             { path: "players", element: <PlayersPage /> },
-            { path: "matches", element: <Matches /> },
+            { path: "matches", element: <MatchesResultPage /> },
             { path: "teams", element: <TeamsPage /> },
-            { path: "schedule", element: <TeamsPage /> },
-            { path: "seasons", element: <TeamsPage /> },
+            { path: "schedule", element: <MatchesSchedulePage /> },
+            { path: "seasons", element: <SeasonStatisticPage /> },
             { path: "teams/:id", element: <TeamDetails /> }
         ],
     },

@@ -1,0 +1,31 @@
+
+.item {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.title {
+    margin: 10px 0 0 0;
+}
+
+.teamName1, .teamName2 {
+    width: 150px;
+}
+
+.result {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+    text-align: center;
+}
+
+.name {
+    color: var(--text-color);
+}
+
+.date {
+    font-size: 14px;
+    color: var(--secondary-color);
+}

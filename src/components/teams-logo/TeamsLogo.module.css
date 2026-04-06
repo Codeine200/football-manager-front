@@ -1,0 +1,42 @@
+
+.teams {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team1, .team2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.team1 {
+    box-sizing: content-box;
+    z-index: 99;
+    border: 3px solid #222232;
+}
+
+.team2 {
+    margin: 0 -0 0 -6px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-color);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+}
+
+.img {
+    width: 35px;
+    height: 35px;
+}
