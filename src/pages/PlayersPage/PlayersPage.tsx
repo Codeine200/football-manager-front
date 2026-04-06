@@ -5,7 +5,7 @@ import type {PageResponse, Player} from "@/types/types.ts";
 import {Pagination} from "@/components/pagination/Pagination";
 import {SearchInput} from "@/components/search-input/SearchInput"
 import Preloader from "@/components/preloader/Preloader";
-import fetchData from "@/api/api.ts"
+import {fetchData} from "@/api/api.ts"
 import {API_PLAYERS_PATH} from "@/config/api.ts";
 
 const pageSize = 7;

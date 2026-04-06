@@ -4,7 +4,7 @@ import type {MatchInfo, PageResponse} from "@/types/types.ts";
 import {Pagination} from "@/components/pagination/Pagination";
 import {SearchInput} from "@/components/search-input/SearchInput"
 import Preloader from "@/components/preloader/Preloader";
-import fetchData from "@/api/api.ts"
+import {fetchData} from "@/api/api.ts"
 import {API_MATCHES_PATH} from "@/config/api.ts";
 import {MatchScheduleItem} from "@/components/match-schedule/MatchScheduleItem";
 

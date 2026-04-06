@@ -8,7 +8,7 @@ type FetchOptions<T> = {
     loading?: (loading: boolean) => void
 }
 
-const fetchData = async <T> (pathApi: string, options?: FetchOptions<T>) => {
+export const fetchData = async <T> (pathApi: string, options?: FetchOptions<T>) => {
     try {
         options?.loading?.(true);
         const params = options?.params ? new URLSearchParams(options?.params).toString() : "";
@@ -23,4 +23,23 @@ const fetchData = async <T> (pathApi: string, options?: FetchOptions<T>) => {
     }
 }
 
-export default fetchData;
+type FetchSingleOptions<T> = {
+    onSuccess: (data: T) => void;
+    onError?: (error: any) => void;
+    loading?: (loading: boolean) => void;
+};
+
+export const fetchOne = async <T>(pathApi: string, options?: FetchSingleOptions<T>) => {
+    try {
+        options?.loading?.(true);
+
+        const response = await fetch(`${API_URL}${pathApi}`);
+        const data: T = await response.json();
+
+        options?.loading?.(false);
+        options?.onSuccess(data);
+    } catch (error) {
+        options?.loading?.(false);
+        options?.onError?.(error);
+    }
+};

@@ -1,47 +1,27 @@
 import {useEffect, useRef, useState} from "react";
-import styles from "./SeasonStatisticPage.module.css";
-import type {PageResponse, TeamDetails, TeamStatsBySeason} from "@/types/types.ts";
-import {Pagination} from "@/components/pagination/Pagination";
+import styles from "./TeamDetailsPage.module.css";
+import type {TeamDetails} from "@/types/types.ts";
 import Preloader from "@/components/preloader/Preloader";
-import fetchData from "@/api/api.ts"
-import {API_SEASONS_PATH, API_TEAMS_PATH} from "@/config/api.ts";
-import {SeasonStatistic} from "@/components/season-statistic/SeasonStatistic.tsx";
+import {fetchOne} from "@/api/api.ts"
+import {API_TEAMS_PATH, API_URL} from "@/config/api.ts";
 import {useParams} from "react-router-dom";
 
 
 const TeamDetailsPage = () => {
     const { id } = useParams();
-    const [team, setTeam] = useState<TeamDetails[]>();
+    const [team, setTeam] = useState<TeamDetails | null>(null);
     const [loading, setLoading] = useState(false);
-    const timerId = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     useEffect(() => {
         if (!id) return;
-
-        timerId.current && clearTimeout(timerId.current);
-        const idParam = id;
-
-        timerId.current = window.setTimeout(() => {
-
-            const params: Record<string, string> = {
-                id: idParam,
-            };
-
-            fetchData(API_TEAMS_PATH, {
-                params: params,
-                onSuccess: (data: PageResponse<TeamDetails>) => {
-                    setTeam(data.items);
-                },
-                loading: (loading: boolean) => {
-                    setLoading(loading);
-                }
-            });
-        }, 200);
-
-        return () => {
-            timerId.current && clearTimeout(timerId.current);
-        }
-
+        fetchOne(API_TEAMS_PATH + '/' + id, {
+            onSuccess: (data: TeamDetails) => {
+                setTeam(data);
+            },
+            loading: (loading: boolean) => {
+                setLoading(loading);
+            }
+        });
     }, [id]);
 
     return (
@@ -49,20 +29,39 @@ const TeamDetailsPage = () => {
             {loading ? (
                 <Preloader />
             ) : (
-                <div className={styles.season}>
-                    {seasons.map(seasonMap=>
-                        Object.entries(seasonMap).map(([season, teams]) => (
-                            <SeasonStatistic
-                                key={season}
-                                season={Number(season)}
-                                teams={teams}
+                <>
+                    <div className={styles.team}>
+                        <div className={styles.background}>
+                            {team?.imageUrl && <img
+                                src={`${API_URL}${team.imageUrl}`}
+                                alt={team.name}
+                                className={styles.img}
                             />
-                        ))
-                    )}
-                </div>
-            )}
-            <Pagination currPage={currPage} totalSizePage={totalPages} onChange={(page) => setCurrPage(page)}/>
+                            }
+                        </div>
+                        <h1 className={styles.title}>{team?.name}</h1>
+                    </div>
 
+                    {team?.players.map((player) =>
+                    <div className={styles.players}>
+                        <div className={styles.item}>
+                            <div className={styles.logo}>
+                                {player?.photo && <img
+                                    src={`${API_URL}${player.photo}`}
+                                    alt={player.fullName}
+                                    className={styles.img}
+                                />
+                                }
+                            </div>
+                            <div className={styles.playersName}>
+                                {player.fullName}
+                            </div>
+                        </div>
+                    </div>
+                    )
+                    }
+                </>
+            )}
         </>
     );
 };
