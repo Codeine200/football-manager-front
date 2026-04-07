@@ -1,7 +1,13 @@
-import { Outlet, NavLink } from "react-router-dom";
+import {Outlet, NavLink, Navigate} from "react-router-dom";
 import {getLinkClass} from "@/helper/helpers.ts";
 
 const MainLayout = () => {
+    const isAuth = !!localStorage.getItem("accessToken");
+
+    if (!isAuth) {
+        return <Navigate to="/admin/login" replace />;
+    }
+
     return (
         <div className="container">
             <div className="content">
