@@ -2,7 +2,7 @@
 .login {
     margin: -100px 0 0 0;
     width: 375px;
-    background: url("../images/image 27.png") no-repeat top center;
+    background: url("../src/assets/images/image 27.png") no-repeat top center;
 }
 
 .login__form {
