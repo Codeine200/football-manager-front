@@ -1,8 +1,14 @@
 import {Outlet, NavLink, Navigate} from "react-router-dom";
 import {getLinkClass} from "@/helper/helpers.ts";
+import {useAuth} from "@/hooks/useAuth.ts";
+import Preloader from "@/components/preloader/Preloader.tsx";
 
 const MainLayout = () => {
-    const isAuth = !!localStorage.getItem("accessToken");
+    const { isAuth, loading } = useAuth();
+
+    if (loading) {
+        return  <Preloader />;
+    }
 
     if (!isAuth) {
         return <Navigate to="/admin/login" replace />;

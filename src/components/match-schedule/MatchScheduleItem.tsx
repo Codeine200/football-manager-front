@@ -1,8 +1,7 @@
 import type {MatchInfo} from "@/types/types.ts";
 import styles from "./MatchScheduleItem.module.css";
-import { API_URL } from "@/config/api";
 import {Link} from "react-router-dom";
-import { parseISO, format } from 'date-fns';
+import {format, parseISO} from 'date-fns';
 import {TeamsLogo} from "@/components/teams-logo/TeamsLogo.tsx";
 
 type Props = {
