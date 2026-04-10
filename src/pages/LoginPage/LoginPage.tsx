@@ -19,7 +19,7 @@ const LoginPage = () => {
 
             setAccessToken(res.data.accessToken);
 
-            navigate("/admin/matches");
+            navigate("/admin/teams");
         } catch (err) {
             console.error("Login failed", err);
         }
