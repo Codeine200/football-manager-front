@@ -92,6 +92,7 @@ api.interceptors.response.use(
             } catch (err) {
                 console.error("Refresh failed");
                 setAccessToken(null);
+                window.location.href = "/admin/login";
                 return Promise.reject(err);
             }
         }

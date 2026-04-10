@@ -1,13 +1,14 @@
-import {Outlet, NavLink, Navigate} from "react-router-dom";
-import {getLinkClass} from "@/helper/helpers.ts";
-import {useAuth} from "@/hooks/useAuth.ts";
-import Preloader from "@/components/preloader/Preloader.tsx";
+import { Outlet, NavLink, Navigate } from "react-router-dom";
+import { getLinkClass } from "@/helper/helpers";
+import { useAuth } from "@/hooks/useAuth";
+import Preloader from "@/components/preloader/Preloader";
+import styles from "./AdminLayout.module.css";
 
-const MainLayout = () => {
+const AdminLayout = () => {
     const { isAuth, loading } = useAuth();
 
     if (loading) {
-        return  <Preloader />;
+        return <Preloader />;
     }
 
     if (!isAuth) {
@@ -15,11 +16,11 @@ const MainLayout = () => {
     }
 
     return (
-        <div className="container">
-            <div className="content">
+        <div className={styles.container}>
+            <div className={styles.content}>
                 <Outlet />
             </div>
-            <nav className="menu">
+            <nav className={styles.menu}>
                 <NavLink
                     to="/admin/matches"
                     className={getLinkClass("trophy")}
@@ -39,4 +40,4 @@ const MainLayout = () => {
     );
 };
 
-export default MainLayout;
+export default AdminLayout;

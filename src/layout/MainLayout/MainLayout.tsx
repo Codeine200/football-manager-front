@@ -1,13 +1,15 @@
 import { Outlet, NavLink } from "react-router-dom";
-import {getLinkClass} from "@/helper/helpers.ts";
+import { getLinkClass } from "@/helper/helpers";
+import styles from "./MainLayout.module.css";
 
 const MainLayout = () => {
     return (
-        <div className="container">
-            <div className="content">
+        <div className={styles.container}>
+            <div className={styles.content}>
                 <Outlet />
             </div>
-            <nav className="menu">
+
+            <nav className={styles.menu}>
                 <NavLink
                     to="/schedule"
                     className={getLinkClass("calendar")}
