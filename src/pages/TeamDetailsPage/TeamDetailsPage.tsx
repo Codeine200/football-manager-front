@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import styles from "./TeamDetailsPage.module.css";
 import type {TeamDetails} from "@/types/types.ts";
 import Preloader from "@/components/preloader/Preloader";
@@ -6,6 +6,7 @@ import {fetchOne} from "@/api/api.ts"
 import {API_TEAMS_PATH, API_URL} from "@/config/api.ts";
 import {useParams} from "react-router-dom";
 
+const PAGE_TITLE = "Team Details";
 
 const TeamDetailsPage = () => {
     const { id } = useParams();
@@ -23,6 +24,10 @@ const TeamDetailsPage = () => {
             }
         });
     }, [id]);
+
+    useEffect(() => {
+        document.title = PAGE_TITLE;
+    }, []);
 
     return (
         <>

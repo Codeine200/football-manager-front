@@ -1,7 +1,9 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import styles from "./LoginPage.module.css";
-import {api, setAccessToken } from "@/api/api.ts";
+import {api, setAccessToken } from "@/api/api";
 import { useNavigate } from "react-router-dom";
+
+const PAGE_TITLE = "Login";
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
@@ -24,6 +26,10 @@ const LoginPage = () => {
             console.error("Login failed", err);
         }
     };
+
+    useEffect(() => {
+        document.title = PAGE_TITLE;
+    }, []);
 
     return (
         <div className={styles.login}>

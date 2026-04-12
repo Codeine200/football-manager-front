@@ -1,14 +1,15 @@
 import {useEffect, useRef, useState} from "react";
 import styles from "./AdminTeamsPage.module.css";
-import type {PageResponse, Team} from "@/types/types.ts";
+import type {PageResponse, Team} from "@/types/types";
 import {Pagination} from "@/components/pagination/Pagination";
 import {SearchInput} from "@/components/search-input/SearchInput"
 import Preloader from "@/components/preloader/Preloader";
-import {fetchData} from "@/api/api.ts"
-import {API_TEAMS_PATH} from "@/config/api.ts";
+import {fetchData} from "@/api/api"
+import {API_TEAMS_PATH} from "@/config/api";
 import {AdminTeamCard} from "@/components/admin/team-card/AdminTeamCard";
 
 const pageSize = 7;
+const PAGE_TITLE = "Teams";
 
 const AdminTeamsPage = () => {
     const [search, setSearch] = useState<string>('');
@@ -52,6 +53,10 @@ const AdminTeamsPage = () => {
         }
 
     }, [currPage, search]);
+
+    useEffect(() => {
+        document.title = PAGE_TITLE;
+    }, []);
 
     return (
         <>

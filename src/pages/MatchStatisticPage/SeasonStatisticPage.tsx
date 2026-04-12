@@ -1,13 +1,14 @@
 import {useEffect, useRef, useState} from "react";
 import styles from "./SeasonStatisticPage.module.css";
-import type {PageResponse, TeamStatsBySeason} from "@/types/types.ts";
+import type {PageResponse, TeamStatsBySeason} from "@/types/types";
 import {Pagination} from "@/components/pagination/Pagination";
 import Preloader from "@/components/preloader/Preloader";
-import {fetchData} from "@/api/api.ts"
-import {API_SEASONS_PATH} from "@/config/api.ts";
-import {SeasonStatistic} from "@/components/season-statistic/SeasonStatistic.tsx";
+import {fetchData} from "@/api/api"
+import {API_SEASONS_PATH} from "@/config/api";
+import {SeasonStatistic} from "@/components/season-statistic/SeasonStatistic";
 
 const pageSize = 2;
+const PAGE_TITLE = "Match statistics";
 
 const SeasonStatisticPage = () => {
     const [seasons, setSeasons] = useState<TeamStatsBySeason[]>([]);
@@ -42,6 +43,10 @@ const SeasonStatisticPage = () => {
         }
 
     }, [currPage]);
+
+    useEffect(() => {
+        document.title = PAGE_TITLE;
+    }, []);
 
     return (
         <>

@@ -1,14 +1,15 @@
 import {useEffect, useRef, useState} from "react";
 import styles from "./MatchesResultPage.module.css";
-import type {MatchResult, PageResponse} from "@/types/types.ts";
+import type {MatchResult, PageResponse} from "@/types/types";
 import {Pagination} from "@/components/pagination/Pagination";
 import {SearchInput} from "@/components/search-input/SearchInput"
 import Preloader from "@/components/preloader/Preloader";
-import {fetchData} from "@/api/api.ts"
-import {API_MATCHES_PATH} from "@/config/api.ts";
+import {fetchData} from "@/api/api"
+import {API_MATCHES_PATH} from "@/config/api";
 import {MatchResultItem} from "@/components/match-result/MatchResultItem";
 
 const pageSize = 7;
+const PAGE_TITLE = "Match results";
 
 const MatchesResultPage = () => {
     const [search, setSearch] = useState<string>('');
@@ -49,6 +50,10 @@ const MatchesResultPage = () => {
         }
 
     }, [currPage, search]);
+
+    useEffect(() => {
+        document.title = PAGE_TITLE;
+    }, []);
 
     return (
         <>
