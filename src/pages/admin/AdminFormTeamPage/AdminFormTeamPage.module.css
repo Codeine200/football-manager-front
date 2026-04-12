@@ -45,3 +45,28 @@
     height: 80px;
     border-radius: 50%;
 }
+
+.imageContainer {
+    position: relative;
+}
+
+.actionButton {
+    width: 30px;
+    height: 30px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+}
+
+.removeImage {
+    position: absolute;
+    top: -20px;
+    right: -25px;
+    background-image: url("../../../assets/images/image-remove.svg");
+}

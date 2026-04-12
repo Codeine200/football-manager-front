@@ -39,11 +39,13 @@ const AdminFormTeamPage = () => {
                             <img src={backIcon} alt="Back to teams "/>
                         </Link>
                         <div className={styles.background}>
-                            {team?.imageUrl && <img
+                            {team?.imageUrl && <div className={styles.imageContainer}><img
                                 src={`${API_URL}${team.imageUrl}`}
                                 alt={team.name}
                                 className={styles.img}
                             />
+                            <button title="Remove logo team" className={`${styles.removeImage} ${styles.actionButton}`}></button>
+                            </div>
                             }
                         </div>
                         <h1 className={styles.title}>{team?.name}</h1>
