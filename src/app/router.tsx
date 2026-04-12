@@ -11,6 +11,7 @@ import LoginPage from "@/pages/LoginPage/LoginPage";
 import AdminTeamsPage from "@/pages/admin/AdminTeamsPage/AdminTeamsPage";
 import AdminPlayersPage from "@/pages/admin/AdminPlayersPage/AdminPlayersPage";
 import AdminMatchesPage from "@/pages/admin/AdminMatchesPage/AdminMatchesPage";
+import AdminFormTeamPage from "@/pages/admin/AdminFormTeamPage/AdminFormTeamPage";
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +37,8 @@ export const router = createBrowserRouter([
         children: [
             { index: true, element: <AdminTeamsPage /> },
             { path: "teams", element: <AdminTeamsPage /> },
+            { path: "teams/new", element: <AdminFormTeamPage /> },
+            { path: "teams/:id", element: <AdminFormTeamPage /> },
             { path: "players", element: <AdminPlayersPage /> },
             { path: "matches", element: <AdminMatchesPage /> }
         ]

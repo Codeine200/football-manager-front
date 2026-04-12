@@ -8,7 +8,7 @@ import {fetchData} from "@/api/api"
 import {API_TEAMS_PATH} from "@/config/api";
 import {AdminTeamCard} from "@/components/admin/team-card/AdminTeamCard";
 
-const pageSize = 7;
+const pageSize = 2;
 const PAGE_TITLE = "Teams";
 
 const AdminTeamsPage = () => {
@@ -19,40 +19,47 @@ const AdminTeamsPage = () => {
     const [loading, setLoading] = useState(false);
     const timerId = useRef<number | undefined>(undefined);
 
+    const fetchTeams = () => {
+        const params: Record<string, string> = {
+            page: currPage.toString(),
+            size: pageSize.toString(),
+        };
+
+        if (search) {
+            params.search = search;
+        }
+
+        fetchData(API_TEAMS_PATH, {
+            params,
+            onSuccess: (data: PageResponse<Team>) => {
+                setTeams(data.items);
+                setTotalPages(data.totalPages);
+            },
+            loading: setLoading,
+        });
+    };
+
     useEffect(() => {
         if (timerId.current !== undefined) {
             clearTimeout(timerId.current);
         }
 
+        setLoading(true);
+
         timerId.current = window.setTimeout(() => {
-            const params: Record<string, string> = {
-                page: currPage.toString(),
-                size: pageSize.toString(),
-            };
-
-            if (search) {
-                params["search"] = search;
-            }
-
-            fetchData(API_TEAMS_PATH, {
-                params: params,
-                onSuccess: (data: PageResponse<Team>) => {
-                    setTeams(data.items);
-                    setTotalPages(data.totalPages);
-                },
-                loading: (loading: boolean) => {
-                    setLoading(loading);
-                }
-            });
-        }, 200);
+            fetchTeams();
+        }, 300);
 
         return () => {
             if (timerId.current !== undefined) {
                 clearTimeout(timerId.current);
             }
         }
+    }, [search]);
 
-    }, [currPage, search]);
+    useEffect(() => {
+        fetchTeams();
+    }, [currPage]);
 
     useEffect(() => {
         document.title = PAGE_TITLE;
@@ -60,13 +67,16 @@ const AdminTeamsPage = () => {
 
     return (
         <>
-            <SearchInput
-                value={search}
-                onChange={setSearch}
-                placeholder="Search your team"
-            />
+            <div className={styles.action}>
+                <SearchInput
+                    value={search}
+                    onChange={setSearch}
+                    placeholder="Search your team"
+                />
+                <button title="Add team" className={`${styles.create} ${styles.actionButton}`}></button>
+            </div>
             {loading
-                ? <Preloader />
+                ? <Preloader/>
                 :  <div className={styles.teams}>
                     {teams.map((team) => (
                         <AdminTeamCard team={team} key={team.id} />

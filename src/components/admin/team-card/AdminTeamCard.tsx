@@ -1,4 +1,4 @@
-import type {Team} from "@/types/types.ts";
+import type {Team} from "@/types/types";
 import styles from "./AdminTeamCard.module.css";
 import { API_URL } from "@/config/api";
 import {Link} from "react-router-dom";
@@ -26,14 +26,14 @@ export const AdminTeamCard = ({ team }: Props) => {
                     }
                 </div>
                 <div className={styles.name}>
-                    <Link to={`admin/teams/${id}`}  className={styles.link}>
+                    <Link to={`/admin/teams/${id}`}  className={styles.link}>
                         {name}
                     </Link>
                 </div>
             </div>
             <div className={styles.action}>
-                <button className={`${styles.edit} ${styles.actionButton}`}></button>
-                <button className={`${styles.delete} ${styles.actionButton}`}></button>
+                <button title="Edit team" className={`${styles.edit} ${styles.actionButton}`}></button>
+                <button title="Remove team" className={`${styles.delete} ${styles.actionButton}`}></button>
             </div>
         </div>
     );

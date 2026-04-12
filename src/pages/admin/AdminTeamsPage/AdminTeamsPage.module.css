@@ -5,3 +5,28 @@
     gap: 5px;
     flex: 1;
 }
+
+.action {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.actionButton {
+    width: 40px;
+    height: 40px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+}
+
+.create {
+    background-image: url("../../../assets/images/create.svg");
+}
