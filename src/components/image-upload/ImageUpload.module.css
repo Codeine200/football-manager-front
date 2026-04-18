@@ -1,0 +1,61 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: left;
+    align-items: center;
+}
+
+
+.actionButton {
+    width: 30px;
+    height: 30px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+}
+
+.input {
+    display: none;
+    border: none;
+    outline: none;
+    flex: 1;
+    background: transparent;
+    color: var(--secondary-color);
+    font-size: 18px;
+}
+
+.icon {
+    width: 60px;
+}
+
+.imageName {
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--secondary-color);
+}
+
+.removeImage {
+    background-image: url("../../assets/images/image-remove.svg");
+}
+
+.title {
+    color: var(--secondary-color);
+}
+
+.imageContainer {
+    width: 60px;
+}
+
+.preview {
+    max-width: 100%;
+    height: auto;
+}

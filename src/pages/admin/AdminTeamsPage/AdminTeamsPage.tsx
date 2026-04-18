@@ -7,12 +7,13 @@ import Preloader from "@/components/preloader/Preloader";
 import {fetchData} from "@/api/api"
 import {API_TEAMS_PATH} from "@/config/api";
 import {AdminTeamCard} from "@/components/admin/team-card/AdminTeamCard";
+import {Link} from "react-router-dom";
 
-const pageSize = 2;
+const pageSize = 7;
 const PAGE_TITLE = "Teams";
 
 const AdminTeamsPage = () => {
-    const [search, setSearch] = useState<string>('');
+    const [search, setSearch] = useState<string | null>(null);
     const [teams, setTeams] = useState<Team[]>([]);
     const [currPage, setCurrPage] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
@@ -40,6 +41,10 @@ const AdminTeamsPage = () => {
     };
 
     useEffect(() => {
+        if (search == null) {
+            return;
+        }
+
         if (timerId.current !== undefined) {
             clearTimeout(timerId.current);
         }
@@ -73,7 +78,7 @@ const AdminTeamsPage = () => {
                     onChange={setSearch}
                     placeholder="Search your team"
                 />
-                <button title="Add team" className={`${styles.create} ${styles.actionButton}`}></button>
+                <Link to={`/admin/teams/new`} title="Add team" className={`${styles.create} ${styles.actionButton}`}></Link>
             </div>
             {loading
                 ? <Preloader/>

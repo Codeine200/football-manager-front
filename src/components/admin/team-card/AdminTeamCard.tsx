@@ -32,7 +32,7 @@ export const AdminTeamCard = ({ team }: Props) => {
                 </div>
             </div>
             <div className={styles.action}>
-                <button title="Edit team" className={`${styles.edit} ${styles.actionButton}`}></button>
+                <Link to={`/admin/teams/${id}`} title="Edit team" className={`${styles.edit} ${styles.actionButton}`}></Link>
                 <button title="Remove team" className={`${styles.delete} ${styles.actionButton}`}></button>
             </div>
         </div>
